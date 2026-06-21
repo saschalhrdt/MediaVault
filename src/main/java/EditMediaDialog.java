@@ -66,8 +66,12 @@ public class EditMediaDialog {
         cbStatus.getItems().addAll("Abgeschlossen", "Offen");
         cbStatus.setValue(medium.getStatusLabel());
 
-        cbRating.getItems().addAll("1", "2", "3", "4", "5");
-        cbRating.setValue(medium.getRating() > 0 ? String.valueOf(medium.getRating()) : "1");
+        cbRating.getItems().addAll("N/A", "1", "2", "3", "4", "5");
+        if (medium.getRating() > 0) {
+            cbRating.setValue(String.valueOf(medium.getRating()));
+        } else {
+            cbRating.setValue("N/A");
+        }
 
         txtNotes.setText(medium.getNotes() != null ? medium.getNotes() : "");
         txtNotes.setWrapText(true);
@@ -143,7 +147,7 @@ public class EditMediaDialog {
         }
 
         int ratingValue = 0;
-        if ("Abgeschlossen".equals(cbStatus.getValue()) && cbRating.getValue() != null) {
+        if (cbRating.getValue() != null && !cbRating.getValue().equals("N/A")) {
             ratingValue = Integer.parseInt(cbRating.getValue());
         }
 
