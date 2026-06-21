@@ -64,7 +64,7 @@ public class EditMediaDialog {
         cbType.setValue(medium.getType());
 
         cbStatus.getItems().addAll("Abgeschlossen", "Offen");
-        cbStatus.setValue(medium.getStatusLabel());
+        cbStatus.setValue(medium.getStatus());
 
         cbRating.getItems().addAll("N/A", "1", "2", "3", "4", "5");
         if (medium.getRating() > 0) {
